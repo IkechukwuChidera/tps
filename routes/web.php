@@ -14,3 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/tps', function () {
+    return view('tps/index');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+//Socialite
+Route::get('/redirect', 'SocialAuthGoogleController@redirect');
+Route::get('/callback', 'SocialAuthGoogleController@callback');
+
+Route::get('/rdirect', 'SocialAuthFacebookController@rdirect');
+Route::get('/cllback', 'SocialAuthFacebookController@cllback');
