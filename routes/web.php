@@ -15,13 +15,40 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/tps', function () {
-    return view('tps/index');
-});
+// Route::get('/tpsadmin', function () {
+//     return view('tpsadmin/dashboard');
+// });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//blades route
+Route::get('/home', 'UserController@home')->name('home');
+// Route::get('/tpss', 'TpsController@index');
+// Route::get('tps/pay', 'TpsController@pay');
+// Route::get('tps/profile', 'TpsController@profile');
+// Route::get('tps/createprofile', 'TpsController@createprofile');
+// Route::get('tps/editprofile', 'TpsController@editprofile');
+
+//logout
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+//joy
+//code for users profile
+Route::get('tps/createprofile', 'UserController@create')->name('c')->middleware('auth');
+Route::post('tps/createprofile/', 'UserController@store');
+
+//code for editing and updating of users profile
+Route::get('/tps/editprofile/{id}', 'UserController@edit')->name('e');
+Route::post('tps/editprofile/{id}', 'UserController@update')->name('update');
+
+//code for the user homepage
+Route::get('/tps/indexs', 'UserController@indexs')->name('tps');
+
+//route for viewing users info.
+Route::get('/tps/profile/', 'UserController@view')->name('vi');
+
+//crud route
+Route::resource('tpsadmin','AdminController');
 
 //Socialite
 Route::get('/redirect', 'SocialAuthGoogleController@redirect');
@@ -29,3 +56,10 @@ Route::get('/callback', 'SocialAuthGoogleController@callback');
 
 Route::get('/rdirect', 'SocialAuthFacebookController@rdirect');
 Route::get('/cllback', 'SocialAuthFacebookController@cllback');
+
+//Paystack
+Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
+Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
+Route::get('/tps/pay', function(){
+    return view('/tps/pay');
+});
