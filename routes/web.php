@@ -36,13 +36,15 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //code for users profile
 Route::get('tps/createprofile', 'UserController@create')->name('c')->middleware('auth');
 Route::post('tps/createprofile/', 'UserController@store');
+// Route::post('tps/pay/', 'PaymentController@store');
 
 //code for editing and updating of users profile
 Route::get('/tps/editprofile/{id}', 'UserController@edit')->name('e');
+Route::get('/tps/pay/{id}', 'UserController@pay')->name('f');
 Route::post('tps/editprofile/{id}', 'UserController@update')->name('update');
 
 //code for the user homepage
-Route::get('/tps/indexs', 'UserController@indexs')->name('tps');
+Route::get('tps', 'UserController@index')->name('tps');
 
 //route for viewing users info.
 Route::get('/tps/profile/', 'UserController@view')->name('vi');
@@ -59,7 +61,10 @@ Route::get('/cllback', 'SocialAuthFacebookController@cllback');
 
 //Paystack
 Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
-Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
-Route::get('/tps/pay', function(){
-    return view('/tps/pay');
-});
+// Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
+// Route::post('/tps/success', 'PaymentController@handleGatewayCallback');
+Route::get('/tps/taxhistory', 'UserController@history')->name('hi');
+Route::get('/tps/paysuccess', 'PaymentController@paysuccess');
+// Route::get('/tps/pay', function(){
+//     return view('/tps/pay');
+// });

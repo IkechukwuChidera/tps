@@ -22,7 +22,7 @@
 
 					<div class="space"></div>
 
-					<a  class="js-open-modal button-blue" href="{{url ('/tps/pay')}}"><strong>Make Tax Payments</strong></a>
+					<a  class="js-open-modal button-blue" href="{{route('f', Auth::user()->id)}}"><strong>Make Tax Payments</strong></a>
 
 
 				</div>

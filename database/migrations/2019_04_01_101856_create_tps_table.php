@@ -17,6 +17,7 @@ class CreateTpsTable extends Migration
 
             $table->increments('id');
             $table->integer('user_id');
+            $table->string('user_name');
             $table->string('company_name');
             $table->text('company_address');
             $table->text('company_email');

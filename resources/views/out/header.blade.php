@@ -47,8 +47,10 @@
      </div>
      <ul id="nav" >
        <li><a href="{{ url('/logout') }}"><b> Logout </b></a></li>
+       <li><a href="{{route('hi', Auth::user()->id)}}"><b> My Tax History </b></a></li>
        <li><a href="{{route('vi', Auth::user()->id)}}"><b> My Company's Profile </b></a></li>
        <li><a href="{{route('c', Auth::user()->id)}}"><b> Create Company's Profile </b></a></li>
+       <li><a href="{{ url('/home') }}"><b> Home </b></a></li>
      </ul>
 
   </nav>
@@ -64,7 +66,7 @@
 
 		          <div class="space"></div>
 
-		          <a href="/tps/pay" class="button-white">Pay Tax Now</a>
+		          <a href="{{route('f', Auth::user()->id)}}" class="button-white">Pay Tax Now</a>
 
 		  	    </div>
 

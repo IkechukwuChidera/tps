@@ -11,6 +11,12 @@
       <form method="POST">
       @csrf
       <div>
+      <label><strong>User Name:<span class="required">*</span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</strong></label>
+      <input class="form-control" style="width:50%; height:5%;" name="user_name" type="text" value="{{auth()->user()->name}}" readonly/>
+      <p color="black">You can't edit this field</p>
+      </div><br/>
+
+      <div>
       <label><strong>Company Name:<span class="required">*</span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</strong></label>
       <input class="form-control" style="width:50%; height:5%;" name="company_name" type="text" />
       </div><br/>

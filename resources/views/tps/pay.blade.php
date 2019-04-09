@@ -2,21 +2,24 @@
 @section('content')
 
 <div align="center">
+<div align="center">
 <h3><b>PAY TAX NOW</b></h3><br/>
 </div>
 
-<form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form" align="center">
+<form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
         <div class="row" style="margin-bottom:40px;">
           <div class="col-md-8 col-md-offset-2">
 
-            <div>
-            <label><strong>Company E-mail:<span class="required">*</span></strong></label>
-            <input class="form-control" style="width:50%; height:5%;" name="email" type="text" /> {{-- required --}}
-            </div><br/>
+            <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
 
             <div>
             <label><strong>Company Name:<span class="required">*</span>&nbsp</strong></label>
-            <input class="form-control" style="width:50%; height:5%;" name="orderID" type="text" />
+            <input class="form-control" style="width:50%; height:5%;" name="orderID" type="text"s value="{{$tp->company_name}}" readonly/>
+            </div><br/>
+
+            <div>
+            <label><strong>Company E-mail:<span class="required">*</span></strong></label>
+            <input class="form-control" style="width:50%; height:5%;" name="email" type="text" value="{{$tp->company_email}}"/ readonly> {{-- required --}}
             </div><br/>
 
             <div>
@@ -62,5 +65,6 @@
           </div>
         </div>
 </form>
+</div>
 
 @endsection('content')

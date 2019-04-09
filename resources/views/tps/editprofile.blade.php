@@ -18,6 +18,10 @@
 
     <form method="POST">
         @csrf
+        <div>
+        <label><strong>User Name:<span class="required">*</span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</strong></label>
+        <input class="form-control" style="width:50%; height:5%;" name="user_name" type="text" value="{{ $tp->user_name }}" readonly/>
+        </div><br/>
 
         <div>
         <label><strong>Company Name:<span class="required">*</span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</strong></label>
